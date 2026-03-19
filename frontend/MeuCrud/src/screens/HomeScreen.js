@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
             <Button
                 title="Adicionar Pessoa"
                 onPress={() => navigation.navigate("AddEdit")}
-            />
+              />
 
             <FlatList
                 data={people}
