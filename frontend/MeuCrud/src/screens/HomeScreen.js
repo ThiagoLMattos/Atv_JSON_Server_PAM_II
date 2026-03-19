@@ -3,7 +3,7 @@ import { View, Text, FlatList, Button } from "react-native";
 
 import styles from "../styles/styles";
 
-import { getPeople, deletePerson } from "../servers/peopleCrud";
+import { getPeople, deletePerson } from "../servers/participantsCrud";
 
 export default function HomeScreen({ navigation }) {
 

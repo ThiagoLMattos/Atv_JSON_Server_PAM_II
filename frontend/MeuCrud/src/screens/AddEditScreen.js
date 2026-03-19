@@ -3,7 +3,7 @@ import { View, TextInput, Button } from "react-native";
 
 import styles from "../styles/styles";
 
-import { createPerson, updatePerson } from "../servers/peopleCrud";
+import { createPerson, updatePerson } from "../servers/participantsCrud";
 
 export default function AddEditScreen({ route, navigation }) {
 
@@ -54,7 +54,7 @@ export default function AddEditScreen({ route, navigation }) {
 
             <Button
                 title = "Salvar"
-                onPress = {save()} //.
+                onPress = {save} //.
             />
 
             <Button
