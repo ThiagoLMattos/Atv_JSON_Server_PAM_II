@@ -2,9 +2,15 @@
     "people": [
         {
             "id": 1,
-            "firstName": "Rafael",
-            "lastName": "Cruz",
-            "email": "rafael@email.com.br"
+            "name": "Thiago Mattos",
+            "state": "SP",
+            "age": 16,
+            "occupation": "Estudante",
+            "status": "Na casa",
+            "phone": "(19) 90029-8922",
+            "emParedao": false,
+            "votes": 0,
+            "isActive": true
         }
     ]
 }
