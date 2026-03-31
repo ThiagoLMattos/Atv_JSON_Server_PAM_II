@@ -11,11 +11,23 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.surfaceLight,
     overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 5.0,
   },
 
   // paredão — borda amarela
   cardParedao: {
     borderColor: COLORS.paredao,
+    borderWidth: 1.5,
+  },
+
+  cardInHouse: {
+    borderColor: COLORS.inHouse, // Uses your green from globalStyles
     borderWidth: 1.5,
   },
 

@@ -3,14 +3,7 @@ import { View, Text } from "react-native";
 
 import styles from "../styles/EmptyState.styles";
 
-/*
- * EmptyState
- * Exibe uma mensagem quando a lista está vazia ou quando há erro
- * Requisito Sênior — mensagem de erro caso a API esteja indisponível
- * Props:
- *   type:    "empty" | "error"
- *   message: string (opcional)
- */
+
 export default function EmptyState({ type = "empty", message }) {
   const content = {
     empty: {

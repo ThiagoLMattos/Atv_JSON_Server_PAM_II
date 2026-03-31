@@ -10,14 +10,6 @@ import {
   toggleParedao,
 } from "../servers/participantsCrud";
 
-/*
- * CardParedao
- * Card exibido na ParedaoScreen para cada participante no paredão
- * Foco em votos e eliminação — mais dramático que o CardParticipant
- * Props:
- *   item:    participant object
- *   refresh: () => void — recarrega a lista após ação
- */
 export default function CardParedao({ item, refresh }) {
   // ─── handlers ─────────────────────────
 
@@ -54,7 +46,7 @@ export default function CardParedao({ item, refresh }) {
 
   async function handleSaveFromParedao() {
     Alert.alert(
-      "🚪 Salvar da berlinda",
+      "🚪 Salvar do paredão",
       `Tem certeza que deseja salvar ${item.name} do paredão?`,
       [
         { text: "Cancelar", style: "cancel" },
@@ -79,7 +71,7 @@ export default function CardParedao({ item, refresh }) {
     <View style={styles.card}>
       {/* faixa superior */}
       <View style={styles.topStripe}>
-        <Text style={styles.stripeText}>🔴 Berlinda</Text>
+        <Text style={styles.stripeText}>🔴 Paredão</Text>
         <Text style={styles.votesStripe}>
           {item.votes ?? 0} votos registrados
         </Text>

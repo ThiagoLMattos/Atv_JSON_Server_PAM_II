@@ -23,9 +23,9 @@ export default StyleSheet.create({
   },
 
   title: {
-    fontSize: FONTS.sizes.xxl,
+    fontSize: FONTS.sizes.title,
     fontWeight: FONTS.weights.black,
-    color: COLORS.textPrimary,
+    color: COLORS.primaryLight,
     letterSpacing: 1.5,
     textTransform: "uppercase",
   },

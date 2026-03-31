@@ -42,20 +42,35 @@ export default function HomeScreen({ navigation }) {
 
   // ─── filtro de pesquisa ────────────────
 
-  const filtered = participants.filter(
-    (p) =>
-      p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.state.toLowerCase().includes(search.toLowerCase()),
-  );
+  const statusPriority = {
+    "No paredão": 1,
+    "Na casa": 2,
+    "Eliminado(a)": 3,
+  };
+
+  const filtered = participants
+    .filter(
+      (p) =>
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.state.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      // First, sort by status priority
+      if (statusPriority[a.status] !== statusPriority[b.status]) {
+        return statusPriority[a.status] - statusPriority[b.status];
+      }
+      // Second, sort alphabetically by name if status is the same
+      return a.name.localeCompare(b.name);
+    });
 
   // ─── contadores ───────────────────────
 
   const totalActive = participants.filter((p) => p.status === "Na casa").length;
   const totalParedao = participants.filter(
-    (p) => p.status === "No paredão",
+    (p) => p.status === "No paredão"
   ).length;
   const totalElim = participants.filter(
-    (p) => p.status === "Eliminado(a)",
+    (p) => p.status === "Eliminado(a)"
   ).length;
 
   // ─── estados de loading / erro ─────────
@@ -75,7 +90,7 @@ export default function HomeScreen({ navigation }) {
       {/* header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={styles.title}>BBB 26 🏠</Text>
+          <Text style={styles.title}>Big Bento Brasil</Text>
           <Text style={styles.subtitle}>Gerenciar participantes</Text>
         </View>
 

@@ -3,12 +3,6 @@ import { View, Text } from "react-native";
 
 import styles from "../styles/StatusBadge.styles";
 
-/*
- * StatusBadge
- * Exibe o status do participante como um badge colorido
- * Props:
- *   status: "Na casa" | "No paredão" | "Eliminado(a)"
- */
 export default function StatusBadge({ status }) {
   function getBadgeStyle() {
     switch (status) {
@@ -35,11 +29,11 @@ export default function StatusBadge({ status }) {
   function getLabel() {
     switch (status) {
       case "Na casa":
-        return "🏠 Na casa";
+        return "Na casa";
       case "No paredão":
-        return "🔴 No paredão";
+        return "No paredão";
       case "Eliminado(a)":
-        return "❌ Eliminado(a)";
+        return "Eliminado(a)";
       default:
         return status;
     }

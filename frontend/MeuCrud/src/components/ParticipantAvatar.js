@@ -3,15 +3,6 @@ import { Image } from "react-native";
 
 import styles from "../styles/ParticipantAvatar.styles";
 
-/*
- * ParticipantAvatar
- * Exibe a foto do participante
- * Se não houver foto, gera um avatar com as iniciais via UI Avatars
- * Props:
- *   photo:  string | null | undefined
- *   name:   string
- *   status: "Na casa" | "No paredão" | "Eliminado(a)"
- */
 export default function ParticipantAvatar({ photo, name, status }) {
   // gera uma cor consistente baseada no nome
   // mesma pessoa → sempre a mesma cor, igual ao Google

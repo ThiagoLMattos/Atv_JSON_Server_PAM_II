@@ -11,6 +11,13 @@ export default StyleSheet.create({
     borderWidth: 1.5,
     borderColor: COLORS.paredao,
     overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 5.0,
   },
 
   // ─── faixa superior amarela ────────────

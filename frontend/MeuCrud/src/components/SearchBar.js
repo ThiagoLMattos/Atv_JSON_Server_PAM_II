@@ -3,15 +3,6 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 
 import styles from "../styles/SearchBar.styles";
 
-/*
- * SearchBar
- * Barra de pesquisa para filtrar participantes
- * Requisito Pleno — filtrar participantes por nome ou estado
- * Props:
- *   value:       string
- *   onChangeText: (text: string) => void
- *   placeholder: string (opcional)
- */
 export default function SearchBar({
   value,
   onChangeText,

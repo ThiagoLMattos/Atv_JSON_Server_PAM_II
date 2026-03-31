@@ -41,6 +41,12 @@ export default function ParedaoScreen({ navigation }) {
 
   const totalVotes = participants.reduce((sum, p) => sum + (p.votes ?? 0), 0);
 
+  // ─── ordenação por votos (Mais votos primeiro) ───
+
+  const sortedParticipants = [...participants].sort((a, b) => {
+    return (b.votes ?? 0) - (a.votes ?? 0);
+  });
+
   // ─── estados de loading / erro ─────────
 
   if (loading) {
@@ -67,7 +73,7 @@ export default function ParedaoScreen({ navigation }) {
         <View style={styles.headerCenter}>
           <Text style={styles.title}>🔴 Paredão</Text>
           <Text style={styles.subtitle}>
-            {participants.length} na berlinda · {totalVotes} votos
+            {participants.length} no paredão · {totalVotes} votos
           </Text>
         </View>
       </View>
@@ -75,7 +81,6 @@ export default function ParedaoScreen({ navigation }) {
       {/* banner — só aparece se houver alguém no paredão */}
       {participants.length > 0 && (
         <View style={styles.banner}>
-          <Text style={styles.bannerEmoji}>📺</Text>
           <View style={styles.bannerContent}>
             <Text style={styles.bannerTitle}>Vote e elimine!</Text>
             <Text style={styles.bannerSubtitle}>
@@ -90,7 +95,7 @@ export default function ParedaoScreen({ navigation }) {
         <EmptyState type="emptyParedao" />
       ) : (
         <FlatList
-          data={participants}
+          data={sortedParticipants} // <--- Use the sorted list here!
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <CardParedao item={item} refresh={loadParedao} />

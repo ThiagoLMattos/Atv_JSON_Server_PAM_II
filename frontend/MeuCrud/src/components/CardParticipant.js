@@ -11,17 +11,10 @@ import {
   deleteParticipant,
 } from "../servers/participantsCrud";
 
-/*
- * CardParticipant
- * Card exibido na HomeScreen para cada participante ativo
- * Props:
- *   item:       participant object
- *   navigation: navigation object
- *   refresh:    () => void — recarrega a lista após ação
- */
 export default function CardParticipant({ item, navigation, refresh }) {
   const isEliminated = item.status === "Eliminado(a)";
   const isInParedao = item.status === "No paredão";
+  const isInHouse = item.status === "Na casa";
 
   // ─── handlers ─────────────────────────
 
@@ -86,6 +79,7 @@ export default function CardParticipant({ item, navigation, refresh }) {
         styles.card,
         isInParedao && styles.cardParedao,
         isEliminated && styles.cardEliminated,
+        isInHouse && styles.cardInHouse,
       ]}
     >
       {/* info principal */}
@@ -147,7 +141,7 @@ export default function CardParticipant({ item, navigation, refresh }) {
             onPress={handleEliminate}
           >
             <Text style={[styles.actionText, styles.btnEliminateText]}>
-              ❌ Eliminar
+              Eliminar
             </Text>
           </TouchableOpacity>
 

@@ -13,14 +13,6 @@
       "isActive": true
     },
     {
-      "name": "Rafael Cruz",
-      "state": "SP",
-      "age": 31,
-      "occupation": "Professor",
-      "phone": "1999999991",
-      "id": "RQeHfN4_q7Q"
-    },
-    {
       "name": "Ana",
       "state": "AM",
       "age": 18,
@@ -38,11 +30,59 @@
       "age": 21,
       "occupation": "Trabalhadora Firme",
       "phone": "(11) 99454-5724",
+      "status": "No paredão",
+      "emParedao": true,
+      "votes": 0,
+      "isActive": true,
+      "id": "-OimpAwHDwg"
+    },
+    {
+      "name": "Pedrão",
+      "state": "SP",
+      "age": 16,
+      "occupation": "Estudante",
+      "phone": "(11) 99283-8182",
+      "status": "No paredão",
+      "emParedao": true,
+      "votes": 21,
+      "isActive": true,
+      "id": "fpcdRxnqdA0"
+    },
+    {
+      "name": "Pyetro Fabricio",
+      "state": "SP",
+      "age": 99,
+      "occupation": "Estudante",
+      "phone": "(11) 99999-9999",
+      "status": "Eliminado(a)",
+      "emParedao": false,
+      "votes": null,
+      "isActive": false,
+      "id": "WBA4r696rFU"
+    },
+    {
+      "name": "Vitor Maguire",
+      "state": "SP",
+      "age": 16,
+      "occupation": "ESTUDANTE",
+      "phone": "(19) 28319-2381",
       "status": "Na casa",
       "emParedao": false,
       "votes": null,
       "isActive": true,
-      "id": "-OimpAwHDwg"
+      "id": "euAtfHvOKWM"
+    },
+    {
+      "name": "Enzo",
+      "state": "SP",
+      "age": 22,
+      "occupation": "Bolsonaro",
+      "phone": "(11) 99999-9999",
+      "status": "Na casa",
+      "emParedao": false,
+      "votes": null,
+      "isActive": true,
+      "id": "BTb-PW-iQqk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
