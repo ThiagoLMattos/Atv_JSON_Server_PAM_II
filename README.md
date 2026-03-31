@@ -11,7 +11,7 @@
 - [⚙️ Instalação](#️-instalação)
 - [▶️ Execução](#️-execução)
 - [💡 Explicação da Solução](#-explicação-da-solução)
-- [👥 Autores](#-autores)
+- [🎥 Vídeo Explicativo](#-vídeo-explicativo)
 
 ---
 
@@ -210,6 +210,10 @@ Todas as operações com a API estão centralizadas em `participantsCrud.js`, is
 
 ---
 
-## 👥 Autores
+## 🎥 Vídeo Explicativo
+
+[Link do Vídeo](https://1drv.ms/v/c/5638522f923fe1ad/IQAhLPpxc1B2Tr9XV4qn-G6tAahs3nfnne-EUOxsYb0ek7k?e=37hegk)
+
+---
 
 Desenvolvido como projeto de CRUD — ETEC Bento Quirino
