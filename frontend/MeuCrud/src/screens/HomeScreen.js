@@ -17,77 +17,74 @@ export default function HomeScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ─── carregar participantes ────────────
-
+  // Fetch all participants when the screen loads
   async function loadParticipants() {
     setLoading(true);
     setError(null);
 
     const { data, error } = await getParticipants();
 
+    // Error Handling
     if (error) {
       setError(error);
       setLoading(false);
-      return;
+      return; // Stops function execution if there is an error
     }
 
     setParticipants(data);
     setLoading(false);
   }
 
+  // Reloads the list whenever the screen gains focus
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", loadParticipants);
-    return unsubscribe;
+    return unsubscribe; // Cleans up listener on unmount
   }, [navigation]);
 
-  // ─── filtro de pesquisa ────────────────
-
+  // Priority table for status sorting
   const statusPriority = {
     "No paredão": 1,
     "Na casa": 2,
     "Eliminado(a)": 3,
   };
 
+  // Filters and sorts the participants list based on search and status
   const filtered = participants
     .filter(
       (p) =>
         p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.state.toLowerCase().includes(search.toLowerCase())
+        p.state.toLowerCase().includes(search.toLowerCase()),
     )
     .sort((a, b) => {
-      // First, sort by status priority
       if (statusPriority[a.status] !== statusPriority[b.status]) {
-        return statusPriority[a.status] - statusPriority[b.status];
+        return statusPriority[a.status] - statusPriority[b.status]; // Sorts by status priority first
       }
-      // Second, sort alphabetically by name if status is the same
-      return a.name.localeCompare(b.name);
+      return a.name.localeCompare(b.name); // Sorts alphabetically by name if status is the same
     });
 
-  // ─── contadores ───────────────────────
-
+  // Calculate counter badges totals
   const totalActive = participants.filter((p) => p.status === "Na casa").length;
   const totalParedao = participants.filter(
-    (p) => p.status === "No paredão"
+    (p) => p.status === "No paredão",
   ).length;
   const totalElim = participants.filter(
-    (p) => p.status === "Eliminado(a)"
+    (p) => p.status === "Eliminado(a)",
   ).length;
 
-  // ─── estados de loading / erro ─────────
-
+  // Handles loading state
   if (loading) {
     return <LoadingState message="Carregando participantes..." />;
   }
 
+  // Handles error state
   if (error) {
     return <EmptyState type="error" message={error} />;
   }
 
-  // ─── render ───────────────────────────
-
+  // Renders main screen layout
   return (
     <View style={styles.screen}>
-      {/* header */}
+      {/* Header section */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Text style={styles.title}>Big Bento Brasil</Text>
@@ -102,7 +99,7 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* contadores */}
+      {/* Counter badges */}
       <View style={styles.counter}>
         <View style={styles.counterBadge}>
           <View
@@ -126,14 +123,14 @@ export default function HomeScreen({ navigation }) {
         </View>
       </View>
 
-      {/* busca */}
+      {/* Search input bar */}
       <SearchBar
         value={search}
         onChangeText={setSearch}
         placeholder="Buscar por nome ou estado..."
       />
 
-      {/* botão adicionar */}
+      {/* Add participant button */}
       <TouchableOpacity
         style={styles.addButton}
         onPress={() => navigation.navigate("AddEdit")}
@@ -141,17 +138,18 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.addButtonText}>+ Adicionar Participante</Text>
       </TouchableOpacity>
 
-      {/* lista */}
+      {/* List or empty fallback state */}
       {filtered.length === 0 ? (
         <EmptyState
           type="empty"
           message={
             search.length > 0
-              ? `Nenhum participante encontrado para "${search}"`
-              : "Nenhum participante cadastrado ainda."
+              ? `Nenhum participante encontrado para "${search}"` // Message for searches
+              : "Nenhum participante cadastrado ainda." // Empty state message
           }
         />
       ) : (
+        // The list of participants, rendered with the CardParticipant component
         <FlatList
           data={filtered}
           keyExtractor={(item) => item.id.toString()}

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-import styles from "../styles/StatusBadge.styles";
+import styles from "../styles/StatusBadge.styles.js";
 
 export default function StatusBadge({ status }) {
   function getBadgeStyle() {
@@ -20,9 +20,9 @@ export default function StatusBadge({ status }) {
   function getTextStyle() {
     switch (status) {
       case "No paredão":
-        return styles.textDark; // amarelo → texto escuro
+        return styles.textDark;
       default:
-        return styles.textLight; // verde/vermelho → texto claro
+        return styles.textLight;
     }
   }
 

@@ -16,27 +16,22 @@ export default StyleSheet.create({
     letterSpacing: 0.8,
   },
 
-  // Na casa
   inHouse: {
     backgroundColor: COLORS.inHouse,
   },
 
-  // No paredão
   paredao: {
     backgroundColor: COLORS.paredao,
   },
 
-  // Eliminado(a)
   eliminated: {
     backgroundColor: COLORS.eliminated,
   },
 
-  // texto escuro para badges claros (paredão amarelo)
   textDark: {
     color: COLORS.background,
   },
 
-  // texto claro para badges escuros (eliminado vermelho)
   textLight: {
     color: COLORS.textPrimary,
   },

@@ -4,20 +4,19 @@ import { Image } from "react-native";
 import styles from "../styles/ParticipantAvatar.styles";
 
 export default function ParticipantAvatar({ photo, name, status }) {
-  // gera uma cor consistente baseada no nome
-  // mesma pessoa → sempre a mesma cor, igual ao Google
+  // Generates a bg color based on the participant's name for the avatar placeholder
   function getColorFromName(name) {
     const colors = [
-      "E63946", // vermelho
-      "FFD60A", // amarelo
-      "2DC653", // verde
-      "FF6B35", // laranja
-      "FF9F1C", // âmbar
-      "FFBF69", // pêssego
-      "06D6A0", // verde água
-      "118AB2", // azul
-      "9B5DE5", // roxo
-      "F15BB5", // rosa
+      "E63946",
+      "FFD60A",
+      "2DC653",
+      "FF6B35",
+      "FF9F1C",
+      "FFBF69",
+      "06D6A0",
+      "118AB2",
+      "9B5DE5",
+      "F15BB5",
     ];
     let hash = 0;
     for (let i = 0; i < name.length; i++) {

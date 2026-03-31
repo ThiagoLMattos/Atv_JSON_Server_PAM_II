@@ -10,11 +10,17 @@ import {
   toggleParedao,
 } from "../servers/participantsCrud";
 
-export default function CardParedao({ item, refresh }) {
-  // ─── handlers ─────────────────────────
+export default function CardParedao({ item, refresh, totalVotes }) {
+  // Math for the progress bar
+  const votes = item.votes ?? 0;
+  const percentage = totalVotes > 0 ? (votes / totalVotes) * 100 : 0;
+  const displayPercent = percentage.toFixed(1) + "%";
 
+  // Registers a new vote
   async function handleVote() {
     const { error } = await voteParticipant(item);
+
+    // Error Handling
     if (error) {
       Alert.alert("Ops!", error);
       return;
@@ -22,10 +28,23 @@ export default function CardParedao({ item, refresh }) {
     refresh();
   }
 
+  // Registers a new vote for the participant
+  async function handleVote() {
+    const { error } = await voteParticipant(item);
+
+    // Error Handling
+    if (error) {
+      Alert.alert("🫠 Ops!", error);
+      return;
+    }
+    refresh();
+  }
+
+  // Handles elimination from the reality show
   async function handleEliminate() {
     Alert.alert(
       "💀 Eliminar participante",
-      `O Brasil decidiu! Tem certeza que deseja eliminar ${item.name} do BBB 26?`,
+      `O Brasil decidiu!!! Tem certeza que deseja eliminar ${item.name} do BBB 26?`,
       [
         { text: "Cancelar", style: "cancel" },
         {
@@ -33,8 +52,10 @@ export default function CardParedao({ item, refresh }) {
           style: "destructive",
           onPress: async () => {
             const { error } = await eliminateParticipant(item);
+
+            // Error Handling
             if (error) {
-              Alert.alert("Ops!", error);
+              Alert.alert("🫠 Ops!", error);
               return;
             }
             refresh();
@@ -44,18 +65,21 @@ export default function CardParedao({ item, refresh }) {
     );
   }
 
+  // Removes participant from Paredao status
   async function handleSaveFromParedao() {
     Alert.alert(
       "🚪 Salvar do paredão",
-      `Tem certeza que deseja salvar ${item.name} do paredão?`,
+      `😇 Tem certeza que deseja salvar ${item.name} do paredão?`,
       [
         { text: "Cancelar", style: "cancel" },
         {
           text: "Salvar",
           onPress: async () => {
             const { error } = await toggleParedao(item);
+
+            // Error Handling
             if (error) {
-              Alert.alert("Ops!", error);
+              Alert.alert("🫠 Ops!", error);
               return;
             }
             refresh();
@@ -65,11 +89,9 @@ export default function CardParedao({ item, refresh }) {
     );
   }
 
-  // ─── render ───────────────────────────
-
   return (
     <View style={styles.card}>
-      {/* faixa superior */}
+      {/* Top info stripe */}
       <View style={styles.topStripe}>
         <Text style={styles.stripeText}>🔴 Paredão</Text>
         <Text style={styles.votesStripe}>
@@ -77,7 +99,7 @@ export default function CardParedao({ item, refresh }) {
         </Text>
       </View>
 
-      {/* conteúdo */}
+      {/* Main card content */}
       <View style={styles.content}>
         <ParticipantAvatar
           photo={item.photo}
@@ -90,18 +112,30 @@ export default function CardParedao({ item, refresh }) {
           <Text style={styles.details}>
             {item.occupation} · {item.state} · {item.age} anos
           </Text>
+
+          {/* Progress Bar */}
+          <View style={styles.progressContainer}>
+            <View style={styles.progressHeader}>
+              <Text style={styles.progressLabel}>Rejeição</Text>
+              <Text style={styles.progressValue}>{displayPercent}</Text>
+            </View>
+            <View style={styles.progressBarBg}>
+              <View
+                style={[styles.progressBarFill, { width: displayPercent }]}
+              />
+            </View>
+          </View>
         </View>
 
-        {/* contador de votos */}
+        {/* Individual vote counter */}
         <View style={styles.votesContainer}>
           <Text style={styles.votesNumber}>{item.votes ?? 0}</Text>
           <Text style={styles.votesLabel}>votos</Text>
         </View>
       </View>
 
-      {/* ações */}
+      {/* Action buttons */}
       <View style={styles.actions}>
-        {/* votar */}
         <TouchableOpacity
           style={[styles.actionButton, styles.btnVote]}
           onPress={handleVote}
@@ -109,7 +143,6 @@ export default function CardParedao({ item, refresh }) {
           <Text style={[styles.actionText, styles.btnVoteText]}>🗳️ Votar</Text>
         </TouchableOpacity>
 
-        {/* salvar da berlinda */}
         <TouchableOpacity
           style={[styles.actionButton, styles.btnSave]}
           onPress={handleSaveFromParedao}
@@ -117,7 +150,6 @@ export default function CardParedao({ item, refresh }) {
           <Text style={[styles.actionText, styles.btnSaveText]}>🚪 Salvar</Text>
         </TouchableOpacity>
 
-        {/* eliminar */}
         <TouchableOpacity
           style={[styles.actionButton, styles.btnEliminate]}
           onPress={handleEliminate}

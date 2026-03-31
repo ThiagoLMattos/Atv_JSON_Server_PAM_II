@@ -2,13 +2,11 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, SPACING, RADIUS } from "./globalStyles";
 
 export default StyleSheet.create({
-  // ─── container principal ───────────────
   screen: {
     flex: 1,
     backgroundColor: COLORS.background,
   },
 
-  // ─── header ───────────────────────────
   header: {
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.xl,
@@ -40,14 +38,12 @@ export default StyleSheet.create({
     color: COLORS.textSecondary,
   },
 
-  // ─── formulário ───────────────────────
   form: {
     flex: 1,
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.xl,
   },
 
-  // ─── campo de input ───────────────────
   fieldContainer: {
     marginBottom: SPACING.lg,
   },
@@ -72,12 +68,10 @@ export default StyleSheet.create({
     borderColor: COLORS.surfaceLight,
   },
 
-  // input focado — borda vermelha
   inputFocused: {
     borderColor: COLORS.primary,
   },
 
-  // input com erro — borda vermelha mais intensa
   inputError: {
     borderColor: COLORS.primary,
   },
@@ -88,13 +82,11 @@ export default StyleSheet.create({
     marginTop: SPACING.xs,
   },
 
-  // ─── avatar preview ───────────────────
   avatarPreview: {
     alignItems: "center",
     marginBottom: SPACING.xl,
   },
 
-  // ─── botão salvar ─────────────────────
   saveButton: {
     backgroundColor: COLORS.primary,
     marginHorizontal: SPACING.lg,

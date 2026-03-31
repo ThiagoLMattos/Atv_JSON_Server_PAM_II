@@ -23,14 +23,6 @@ export default StyleSheet.create({
     marginBottom: SPACING.sm,
   },
 
-  message: {
-    fontSize: FONTS.sizes.md,
-    color: COLORS.textSecondary,
-    textAlign: "center",
-    lineHeight: 22,
-  },
-
-  // erro — título fica vermelho
   errorTitle: {
     color: COLORS.primary,
   },

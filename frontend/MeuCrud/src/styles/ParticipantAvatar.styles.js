@@ -9,13 +9,11 @@ export default StyleSheet.create({
     backgroundColor: COLORS.surfaceLight,
   },
 
-  // paredão — borda amarela pulsando atenção
   avatarParedao: {
     borderWidth: 2,
     borderColor: COLORS.paredao,
   },
 
-  // eliminado — borda vermelha
   avatarEliminated: {
     borderWidth: 2,
     borderColor: COLORS.eliminated,

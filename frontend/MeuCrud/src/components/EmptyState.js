@@ -3,23 +3,20 @@ import { View, Text } from "react-native";
 
 import styles from "../styles/EmptyState.styles";
 
-
 export default function EmptyState({ type = "empty", message }) {
   const content = {
     empty: {
       emoji: "🏠",
-      title: "Nenhum participante",
-      message: message || "A casa está vazia por enquanto.",
+      title: "Nenhum participante está na casa agora.",
     },
     error: {
-      emoji: "😔",
-      title: "Não foi possível conectar à casa",
+      emoji: "🛑",
+      title: "Não foi possível conectar ao sistema",
       message: message || "Verifique sua conexão e tente novamente.",
     },
     emptyParedao: {
-      emoji: "🎉",
-      title: "Sem paredão",
-      message: message || "Nenhum participante está no paredão agora.",
+      emoji: "🚪",
+      title: "Nenhum participante está no paredão agora.",
     },
   };
 
@@ -31,7 +28,6 @@ export default function EmptyState({ type = "empty", message }) {
       <Text style={[styles.title, type === "error" && styles.errorTitle]}>
         {current.title}
       </Text>
-      <Text style={styles.message}>{current.message}</Text>
     </View>
   );
 }

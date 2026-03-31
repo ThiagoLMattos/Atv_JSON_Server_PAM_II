@@ -2,13 +2,11 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, SPACING, RADIUS } from "./globalStyles";
 
 export default StyleSheet.create({
-  // ─── container principal ───────────────
   screen: {
     flex: 1,
     backgroundColor: COLORS.background,
   },
 
-  // ─── header ───────────────────────────
   header: {
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.xl,
@@ -36,7 +34,6 @@ export default StyleSheet.create({
     marginTop: SPACING.xs,
   },
 
-  // ─── botão paredão no header ───────────
   paredaoButton: {
     backgroundColor: COLORS.paredao,
     paddingHorizontal: SPACING.md,
@@ -54,7 +51,6 @@ export default StyleSheet.create({
     letterSpacing: 1,
   },
 
-  // ─── botão adicionar ──────────────────
   addButton: {
     backgroundColor: COLORS.primary,
     marginHorizontal: SPACING.lg,
@@ -75,7 +71,6 @@ export default StyleSheet.create({
     letterSpacing: 1,
   },
 
-  // ─── contador de participantes ─────────
   counter: {
     paddingHorizontal: SPACING.lg,
     paddingBottom: SPACING.sm,
@@ -105,7 +100,6 @@ export default StyleSheet.create({
     borderRadius: RADIUS.full,
   },
 
-  // ─── lista ────────────────────────────
   list: {
     paddingTop: SPACING.xs,
   },

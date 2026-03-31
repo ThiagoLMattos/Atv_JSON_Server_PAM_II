@@ -17,12 +17,8 @@ import {
   updateParticipant,
 } from "../servers/participantsCrud";
 
-// ─────────────────────────────────────────
-//  Field — OUTSIDE AddEditScreen
-//  se ficar dentro, re-render desmonta o TextInput
-//  e o teclado fecha a cada caractere digitado
-// ─────────────────────────────────────────
-
+// Text input field component
+// Kept outside to prevent keyboard flickering on re-render (had problems with it)
 function Field({
   label,
   field,
@@ -43,8 +39,8 @@ function Field({
       <TextInput
         style={[
           styles.input,
-          focused === field && styles.inputFocused,
-          errors[field] && styles.inputError,
+          focused === field && styles.inputFocused, // Highlight focused field
+          errors[field] && styles.inputError, // Highlight error state
         ]}
         value={value}
         onChangeText={onChangeText}
@@ -62,10 +58,7 @@ function Field({
   );
 }
 
-// ─────────────────────────────────────────
-//  Phone mask — (XX) XXXXX-XXXX
-// ─────────────────────────────────────────
-
+// Phone mask — (XX) XXXXX-XXXX
 function applyPhoneMask(value) {
   const digits = value.replace(/\D/g, "").slice(0, 11);
 
@@ -77,16 +70,11 @@ function applyPhoneMask(value) {
   return value;
 }
 
-// ─────────────────────────────────────────
-//  AddEditScreen
-// ─────────────────────────────────────────
-
 export default function AddEditScreen({ route, navigation }) {
   const participant = route.params?.participant;
-  const isEditing = !!participant;
+  const isEditing = !!participant; // Boolean check for edit mode
 
-  // ─── estados do formulário ────────────
-
+  // Form states
   const [name, setName] = useState(participant?.name || "");
   const [state, setState] = useState(participant?.state || "");
   const [age, setAge] = useState(participant?.age?.toString() || "");
@@ -97,14 +85,12 @@ export default function AddEditScreen({ route, navigation }) {
   const [saving, setSaving] = useState(false);
   const [errors, setErrors] = useState({});
 
-  // ─── validação ────────────────────────
-
+  // Business rules for form validation
   function validate() {
     const newErrors = {};
     const phoneDigits = phone.replace(/\D/g, "");
 
     if (!name.trim()) newErrors.name = "Nome é obrigatório";
-
     if (name.trim().length < 2)
       newErrors.name = "Nome deve ter pelo menos 2 caracteres";
 
@@ -144,31 +130,30 @@ export default function AddEditScreen({ route, navigation }) {
       newErrors.state = "Use uma sigla válida de estado do Brasil (ex: SP)";
 
     if (!age.trim()) newErrors.age = "Idade é obrigatória";
-
     if (isNaN(Number(age)) || Number(age) <= 0)
       newErrors.age = "Idade deve ser um número válido";
-
     if (Number(age) < 16 || Number(age) > 100)
       newErrors.age = "Idade deve ser entre 16 e 100 anos";
+    if (!/^\d+$/.test(age.trim()))
+      newErrors.age = "Idade deve conter apenas números"; // There's already a only numbers keyboard but this is a good extra check
 
     if (!occupation.trim()) newErrors.occupation = "Ocupação é obrigatória";
-
     if (occupation.trim().length < 2)
       newErrors.occupation = "Ocupação deve ter pelo menos 2 caracteres";
 
     if (!phone.trim()) newErrors.phone = "Telefone é obrigatório";
-
     if (phoneDigits.length < 10 || phoneDigits.length > 11)
       newErrors.phone = "Telefone inválido — use (XX) XXXXX-XXXX";
+    if (!/^\d+$/.test(phoneDigits))
+      newErrors.phone = "Telefone deve conter apenas números"; // There's already a only numbers keyboard but this is a good extra check
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return Object.keys(newErrors).length === 0; // Valid if no error keys exist
   }
 
-  // ─── salvar ───────────────────────────
-
+  // Handle save action (Create or Update)
   async function handleSave() {
-    if (!validate()) return;
+    if (!validate()) return; // Stop if validation fails
 
     setSaving(true);
 
@@ -186,6 +171,7 @@ export default function AddEditScreen({ route, navigation }) {
 
     setSaving(false);
 
+    // Error Handling
     if (error) {
       Alert.alert("Ops!", error);
       return;
@@ -194,14 +180,12 @@ export default function AddEditScreen({ route, navigation }) {
     navigation.goBack();
   }
 
-  // ─── render ───────────────────────────
-
   return (
     <KeyboardAvoidingView
       style={styles.screen}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      {/* header */}
+      {/* Header section */}
       <View style={styles.header}>
         <Text style={styles.title}>
           {isEditing ? "✏️ Editar" : "➕ Adicionar"}
@@ -216,15 +200,16 @@ export default function AddEditScreen({ route, navigation }) {
 
       <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.form}>
-          {/* avatar preview */}
+          {/* Avatar preview */}
           <View style={styles.avatarPreview}>
             <ParticipantAvatar
-              photo={participant?.photo}
-              name={name || "?"}
+              photo={participant?.photo} // Participants does not have a photo field attribute, but if they had it would show the preview here
+              name={name || "?"} // Placeholder for name preview
               status={participant?.status || "Na casa"}
             />
           </View>
 
+          {/* Form fields */}
           <Field
             label="Nome completo"
             field="name"
@@ -294,7 +279,7 @@ export default function AddEditScreen({ route, navigation }) {
         </View>
       </ScrollView>
 
-      {/* botão salvar */}
+      {/* Save button logic */}
       <TouchableOpacity
         style={[styles.saveButton, saving && styles.saveButtonDisabled]}
         onPress={handleSave}
@@ -305,7 +290,8 @@ export default function AddEditScreen({ route, navigation }) {
             ? "Salvando..."
             : isEditing
               ? "Salvar alterações"
-              : "Adicionar participante"}
+              : "Adicionar participante"}{" "}
+          {/* Responsive Text for whats happening */}
         </Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>

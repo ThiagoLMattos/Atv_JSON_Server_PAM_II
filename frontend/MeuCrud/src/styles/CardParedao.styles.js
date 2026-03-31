@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, SPACING, RADIUS } from "./globalStyles";
 
 export default StyleSheet.create({
-  // ─── container principal ───────────────
   card: {
     backgroundColor: COLORS.surface,
     borderRadius: RADIUS.md,
@@ -20,7 +19,6 @@ export default StyleSheet.create({
     shadowRadius: 5.0,
   },
 
-  // ─── faixa superior amarela ────────────
   topStripe: {
     backgroundColor: COLORS.paredao,
     paddingHorizontal: SPACING.md,
@@ -44,7 +42,6 @@ export default StyleSheet.create({
     color: COLORS.background,
   },
 
-  // ─── conteúdo principal ────────────────
   content: {
     flexDirection: "row",
     alignItems: "center",
@@ -52,7 +49,6 @@ export default StyleSheet.create({
     gap: SPACING.md,
   },
 
-  // ─── info ──────────────────────────────
   info: {
     flex: 1,
     gap: SPACING.xs,
@@ -69,7 +65,38 @@ export default StyleSheet.create({
     color: COLORS.textSecondary,
   },
 
-  // ─── votos ─────────────────────────────
+  // --- Progress Bar Styles ---
+  progressContainer: {
+    marginTop: SPACING.sm,
+  },
+  progressHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 4,
+  },
+  progressLabel: {
+    fontSize: 10,
+    fontWeight: FONTS.weights.bold,
+    color: COLORS.textSecondary,
+    textTransform: "uppercase",
+  },
+  progressValue: {
+    fontSize: 10,
+    fontWeight: FONTS.weights.black,
+    color: COLORS.paredao,
+  },
+  progressBarBg: {
+    height: 6,
+    backgroundColor: COLORS.surfaceLight,
+    borderRadius: RADIUS.full,
+    overflow: "hidden",
+  },
+  progressBarFill: {
+    height: "100%",
+    backgroundColor: COLORS.paredao,
+  },
+  // ---------------------------
+
   votesContainer: {
     alignItems: "center",
     justifyContent: "center",
@@ -92,7 +119,6 @@ export default StyleSheet.create({
     letterSpacing: 0.5,
   },
 
-  // ─── ações ────────────────────────────
   actions: {
     flexDirection: "row",
     borderTopWidth: 1,
@@ -117,7 +143,6 @@ export default StyleSheet.create({
     letterSpacing: 0.5,
   },
 
-  // votar — amarelo, destaque total
   btnVote: {
     backgroundColor: COLORS.paredao,
   },
@@ -126,7 +151,6 @@ export default StyleSheet.create({
     fontSize: FONTS.sizes.sm,
   },
 
-  // eliminar — vermelho
   btnEliminate: {
     backgroundColor: COLORS.primary,
   },
@@ -134,7 +158,6 @@ export default StyleSheet.create({
     color: COLORS.textPrimary,
   },
 
-  // salvar da berlinda — outline amarelo
   btnSave: {
     backgroundColor: "transparent",
     borderWidth: 1,

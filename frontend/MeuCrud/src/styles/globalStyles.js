@@ -1,37 +1,21 @@
 import { StyleSheet } from "react-native";
 
-// ─────────────────────────────────────────
-//  BBB 26 — Global Design Tokens
-//  Tema: laranja, amarelo, branco — energia de programa de TV
-// ─────────────────────────────────────────
-
 export const COLORS = {
-  // Primárias — laranja BBB
-  primary: "#FF6B35", // laranja vibrante
-  primaryDark: "#E55A26", // laranja escuro
-  primaryLight: "#FF8C5A", // laranja claro
-
-  // Secundárias — amarelo spotlight
-  accent: "#FFD60A", // amarelo spotlight
-  accentDark: "#E6C000", // amarelo escuro
-
-  // Neutros — fundo claro com superfícies brancas/cinzas
-  background: "#FFFFFF", // branco puro
-  surface: "#F7F7F7", // cinza muito claro para cards
-  surfaceLight: "#EDEDED", // bordas e divisores
-  surfaceMid: "#DDDDDD", // intermediário
-
-  // Status do jogo
-  inHouse: "#4CAF50", // verde — Na casa
-  eliminated: "#FF3B30", // vermelho — Eliminado(a)
-  paredao: "#FFD60A", // amarelo — No paredão
-
-  // Texto
-  textPrimary: "#111111", // preto suave
-  textSecondary: "#333333", // cinza escuro
-  textMuted: "#666666", // cinza médio
-
-  // Extras
+  primary: "#FF6B35",
+  primaryDark: "#E55A26",
+  primaryLight: "#FF8C5A",
+  accent: "#FFD60A",
+  accentDark: "#E6C000",
+  background: "#FFFFFF",
+  surface: "#F7F7F7",
+  surfaceLight: "#EDEDED",
+  surfaceMid: "#DDDDDD",
+  inHouse: "#4CAF50",
+  eliminated: "#FF3B30",
+  paredao: "#FFD60A",
+  textPrimary: "#111111",
+  textSecondary: "#333333",
+  textMuted: "#666666",
   white: "#FFFFFF",
   orange: "#FF6B35",
   yellow: "#FFD60A",
@@ -71,10 +55,6 @@ export const RADIUS = {
   lg: 20,
   full: 999,
 };
-
-// ─────────────────────────────────────────
-//  Estilos globais reutilizáveis
-// ─────────────────────────────────────────
 
 export default StyleSheet.create({
   screen: {

@@ -15,7 +15,6 @@ export default StyleSheet.create({
     borderColor: COLORS.surfaceLight,
   },
 
-  // container ativo — borda vermelha quando em foco
   containerFocused: {
     borderColor: COLORS.primary,
   },

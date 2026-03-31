@@ -12,25 +12,28 @@ import {
 } from "../servers/participantsCrud";
 
 export default function CardParticipant({ item, navigation, refresh }) {
+  // Helper constants for status checks
   const isEliminated = item.status === "Eliminado(a)";
   const isInParedao = item.status === "No paredão";
   const isInHouse = item.status === "Na casa";
 
-  // ─── handlers ─────────────────────────
-
+  // Toggles participant in or out of Paredao
   async function handleToggleParedao() {
     const { error } = await toggleParedao(item);
+
+    // Error Handling
     if (error) {
-      Alert.alert("Ops!", error);
+      Alert.alert("🫠 Ops!", error);
       return;
     }
     refresh();
   }
 
+  // Handles elimination with confirmation
   async function handleEliminate() {
     Alert.alert(
       "Eliminar participante",
-      `Tem certeza que deseja eliminar ${item.name}?`,
+      `💀 Tem certeza que deseja eliminar ${item.name}?`,
       [
         { text: "Cancelar", style: "cancel" },
         {
@@ -38,8 +41,10 @@ export default function CardParticipant({ item, navigation, refresh }) {
           style: "destructive",
           onPress: async () => {
             const { error } = await eliminateParticipant(item);
+
+            // Error Handling
             if (error) {
-              Alert.alert("Ops!", error);
+              Alert.alert("🫠 Ops!", error);
               return;
             }
             refresh();
@@ -49,10 +54,11 @@ export default function CardParticipant({ item, navigation, refresh }) {
     );
   }
 
+  // Permanent removal from system
   async function handleDelete() {
     Alert.alert(
       "Remover do sistema",
-      `Isso irá remover ${item.name} permanentemente do sistema. Tem certeza?`,
+      `🧹 Isso irá remover ${item.name} permanentemente do sistema. Tem certeza?`,
       [
         { text: "Cancelar", style: "cancel" },
         {
@@ -60,8 +66,10 @@ export default function CardParticipant({ item, navigation, refresh }) {
           style: "destructive",
           onPress: async () => {
             const { error } = await deleteParticipant(item);
+
+            // Error Handling
             if (error) {
-              Alert.alert("Ops!", error);
+              Alert.alert("🫠 Ops!", error);
               return;
             }
             refresh();
@@ -70,8 +78,6 @@ export default function CardParticipant({ item, navigation, refresh }) {
       ],
     );
   }
-
-  // ─── render ───────────────────────────
 
   return (
     <View
@@ -82,7 +88,7 @@ export default function CardParticipant({ item, navigation, refresh }) {
         isInHouse && styles.cardInHouse,
       ]}
     >
-      {/* info principal */}
+      {/* Main participant info */}
       <View style={styles.content}>
         <ParticipantAvatar
           photo={item.photo}
@@ -99,10 +105,10 @@ export default function CardParticipant({ item, navigation, refresh }) {
         </View>
       </View>
 
-      {/* ações — só aparecem se não estiver eliminado */}
+      {/* Action buttons section */}
+      {/* Hidden if participant is already eliminated */}
       {!isEliminated && (
         <View style={styles.actions}>
-          {/* editar */}
           <TouchableOpacity
             style={[styles.actionButton, styles.btnEdit]}
             onPress={() =>
@@ -114,7 +120,7 @@ export default function CardParticipant({ item, navigation, refresh }) {
             </Text>
           </TouchableOpacity>
 
-          {/* paredão toggle */}
+          {/* Paredao toggle logic */}
           {isInParedao ? (
             <TouchableOpacity
               style={[styles.actionButton, styles.btnRemoveParedao]}
@@ -135,7 +141,6 @@ export default function CardParticipant({ item, navigation, refresh }) {
             </TouchableOpacity>
           )}
 
-          {/* eliminar */}
           <TouchableOpacity
             style={[styles.actionButton, styles.btnEliminate]}
             onPress={handleEliminate}
@@ -145,7 +150,6 @@ export default function CardParticipant({ item, navigation, refresh }) {
             </Text>
           </TouchableOpacity>
 
-          {/* deletar do sistema */}
           <TouchableOpacity
             style={[styles.actionButton, styles.btnDelete]}
             onPress={handleDelete}

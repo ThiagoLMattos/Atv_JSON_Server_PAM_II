@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, SPACING, RADIUS } from "./globalStyles";
 
 export default StyleSheet.create({
-  // ─── container principal ───────────────
   card: {
     backgroundColor: COLORS.surface,
     borderRadius: RADIUS.md,
@@ -20,23 +19,20 @@ export default StyleSheet.create({
     shadowRadius: 5.0,
   },
 
-  // paredão — borda amarela
   cardParedao: {
     borderColor: COLORS.paredao,
     borderWidth: 1.5,
   },
 
   cardInHouse: {
-    borderColor: COLORS.inHouse, // Uses your green from globalStyles
+    borderColor: COLORS.inHouse,
     borderWidth: 1.5,
   },
 
-  // eliminado — opacidade reduzida
   cardEliminated: {
     opacity: 0.6,
   },
 
-  // ─── conteúdo do card ──────────────────
   content: {
     flexDirection: "row",
     alignItems: "center",
@@ -44,7 +40,6 @@ export default StyleSheet.create({
     gap: SPACING.md,
   },
 
-  // ─── info do participante ──────────────
   info: {
     flex: 1,
     gap: SPACING.xs,
@@ -61,7 +56,6 @@ export default StyleSheet.create({
     color: COLORS.textSecondary,
   },
 
-  // ─── ações ────────────────────────────
   actions: {
     flexDirection: "row",
     borderTopWidth: 1,
@@ -71,7 +65,6 @@ export default StyleSheet.create({
     gap: SPACING.sm,
   },
 
-  // botão base
   actionButton: {
     flex: 1,
     paddingVertical: SPACING.sm,
@@ -87,7 +80,6 @@ export default StyleSheet.create({
     letterSpacing: 0.5,
   },
 
-  // editar — cinza
   btnEdit: {
     backgroundColor: COLORS.surfaceLight,
   },
@@ -95,7 +87,6 @@ export default StyleSheet.create({
     color: COLORS.textSecondary,
   },
 
-  // paredão — amarelo
   btnParedao: {
     backgroundColor: COLORS.paredao,
   },
@@ -103,7 +94,6 @@ export default StyleSheet.create({
     color: COLORS.background,
   },
 
-  // tirar do paredão — outline amarelo
   btnRemoveParedao: {
     backgroundColor: "transparent",
     borderWidth: 1,
@@ -113,7 +103,6 @@ export default StyleSheet.create({
     color: COLORS.paredao,
   },
 
-  // eliminar — vermelho
   btnEliminate: {
     backgroundColor: COLORS.primary,
   },
@@ -121,7 +110,6 @@ export default StyleSheet.create({
     color: COLORS.textPrimary,
   },
 
-  // deletar — muted, discreto
   btnDelete: {
     backgroundColor: "transparent",
     borderWidth: 1,

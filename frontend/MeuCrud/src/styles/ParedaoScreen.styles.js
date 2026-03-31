@@ -2,13 +2,11 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, SPACING, RADIUS } from "./globalStyles";
 
 export default StyleSheet.create({
-  // ─── container principal ───────────────
   screen: {
     flex: 1,
     backgroundColor: COLORS.background,
   },
 
-  // ─── header ───────────────────────────
   header: {
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.xl,
@@ -48,7 +46,6 @@ export default StyleSheet.create({
     marginTop: SPACING.xs,
   },
 
-  // ─── banner de alerta ─────────────────
   banner: {
     marginHorizontal: SPACING.lg,
     marginBottom: SPACING.md,
@@ -84,7 +81,6 @@ export default StyleSheet.create({
     opacity: 0.8,
   },
 
-  // ─── lista ────────────────────────────
   list: {
     paddingTop: SPACING.xs,
   },
