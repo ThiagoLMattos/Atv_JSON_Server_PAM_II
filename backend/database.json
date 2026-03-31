@@ -1,16 +1,49 @@
 {
-    "people": [
-        {
-            "id": 1,
-            "name": "Thiago Mattos",
-            "state": "SP",
-            "age": 16,
-            "occupation": "Estudante",
-            "status": "Na casa",
-            "phone": "(19) 90029-8922",
-            "emParedao": false,
-            "votes": 0,
-            "isActive": true
-        }
-    ]
+  "participants": [
+    {
+      "id": "1",
+      "name": "Thiago Mattos",
+      "state": "SP",
+      "age": 16,
+      "occupation": "Estudante",
+      "status": "Eliminado(a)",
+      "phone": "(19) 90029-8922",
+      "emParedao": false,
+      "votes": 19,
+      "isActive": true
+    },
+    {
+      "name": "Rafael Cruz",
+      "state": "SP",
+      "age": 31,
+      "occupation": "Professor",
+      "phone": "1999999991",
+      "id": "RQeHfN4_q7Q"
+    },
+    {
+      "name": "Ana",
+      "state": "AM",
+      "age": 18,
+      "occupation": "Alagais",
+      "phone": "(11) 11111-1112",
+      "status": "Eliminado(a)",
+      "emParedao": false,
+      "votes": 0,
+      "isActive": true,
+      "id": "8iswcgDYcJQ"
+    },
+    {
+      "name": "Bruna Rodrigo",
+      "state": "AL",
+      "age": 21,
+      "occupation": "Trabalhadora Firme",
+      "phone": "(11) 99454-5724",
+      "status": "Na casa",
+      "emParedao": false,
+      "votes": null,
+      "isActive": true,
+      "id": "-OimpAwHDwg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
